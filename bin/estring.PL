@@ -5,22 +5,16 @@ use Convert::Ethiopic::Cstocs;
 
 main:
 {
-local ( $r ) = LiveGeez::Request->new;
-
-	ReadParse ( \%input );
-	#
-	# On web we assume GFZemen as the default output system if none is
-	# specified.  At the command line we will set UTF8 as the default
-	# output system when none is specified.
-	#
-	$input{sysOut} = "UTF8" if ( !$input{sys} && !$input{sysOut} );
-	$r->ParseInput ( \%input );
-	undef ( %input );
+local ( $r ) = LiveGeez::Request->new ( ( 'sysOut' => 'UTF8' ) );
 
 	my ( $c ) = Convert::Ethiopic::Cstocs->new ( $r->{sysIn}, $r->{sysOut} );
 
-	print &$c ($r->{string}), "\n";
-	# print $c->conv( $r->{string} );  # this works too...
+	while ( <> ) {
+		chop;
+		$r->{string} = $_;
+		print &$c ($r->{string}), "\n";
+		# print $c->conv( $r->{string} );  # this works too...
+	}
 
 }
 
@@ -34,7 +28,8 @@ estring -- print date and time in Amharic or Tigrigna with locale options
 
 =head1 SYNOPSIS
 
-  estring.pl string="selam"
+  estring.pl
+  selam^D
 
 
 =head1 DESCRIPTION

@@ -238,7 +238,7 @@ $uppercase    = 128;
 #	Monotype http://www.monotype.com/
 #
 
-	'Amharic'  				=>	[ 'Amharic 1',					$monotype,		0,	0,	1,	'\\MonoType\\amarNa'          ],
+	'Amharic'  				=>	[ 'Amharic 1',					$monotype1,		0,	0,	1,	'\\MonoType\\amarNa'          ],
 	'Amharic 2'  			=>	[ 'Amharic 2',					$monotype2,		0,	1,	1,	'\\MonoType\\amarNa'          ],
 	'Amharic 3'  			=>	[ 'Amharic 3',					$monotype3,		0,	2,	1,	'\\MonoType\\amarNa'          ],
 	'AmharicBook'  			=>	[ 'Amharic Book 1',				$monotype1,		0,	3,	1,	'\\MonoType\\amarNa_\\Book\\' ],

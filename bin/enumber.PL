@@ -5,16 +5,9 @@ use Convert::Ethiopic::Cstocs;
 
 main:
 {
-local ( $r ) = LiveGeez::Request->new;
+local ( %input ) = ( '0' => 'nothing', 'sysOut' => 'UTF8' );
+local ( $r )     = LiveGeez::Request->new ( \%input );
 
-	ReadParse ( \%input );
-	#
-	# On web we assume GFZemen as the default output system if none is
-	# specified.  At the command line we will set UTF8 as the default
-	# output system when none is specified.
-	#
-	$input{sysOut} = "UTF8" if ( !$input{sys} && !$input{sysOut} );
-	$r->ParseInput ( \%input );
 	undef ( %input );
 
 	while ( <> ) {
