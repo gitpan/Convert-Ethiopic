@@ -38,7 +38,7 @@ require Exporter;
 
 sub enumerate
 {
-local ($index) = 0;
+my ($index) = 0;
 
   foreach (@_) {
 	  $_ =  $index++;
@@ -46,16 +46,9 @@ local ($index) = 0;
 }
 
 
-local ( $enumerated );
-
-if ( !$enumerated ) {  #  Hopefully all this happens only the first time
-                       #  the package is loaded  -?
-
-$enumerated = 1;
-
 enumerate ( $TTName, $LESysNum, $LESysTV, $LEFontNum, $HasNum, $HTMLName );
 
-enumerate ( $nocs, $acis, $acuwork, $addisword1, $addisword2, $alpas, $branai, $branaii, $cbhalea, $cbhaleb, $dehai, $dejene1, $dejene2, $ecoling, $ed, $enhpfr, $ethcitap, $ethcitas, $ethcitau, $ethiome, $ethiomex, $ethiop, $ethiopic1, $ethiopic2, $ethiosoft, $ethiosys, $ethiosysx, $fidelxtr1, $fidelxtr2, $gezbausi, $gezedit, $gezedit98, $gezfont, $gezfree1, $gezfree2, $gezigna, $gezi, $gezii, $geznewa, $geznewb, $geztype, $ies, $image, $iso, $jis, $junet, $laser, $mainz, $monotype1, $monotype2, $monotype3, $monoalt, $mononum, $muletex, $nci, $ncic, $ncic_et, $omnitech, $powergez, $powergeznum, $qubee, $samwp, $sam98, $sera, $sil1, $sil2, $sil3, $tfanus, $tfanusnew, $unicode, $visualgez, $all );
+enumerate ( $nocs, $acis, $acuwork, $addisword1, $addisword2, $alpas, $branai, $branaii, $cbhalea, $cbhaleb, $dehai, $dejene1, $dejene2, $ecoling, $ed, $enhpfr, $ethcitap, $ethcitas, $ethcitau, $ethiome, $ethiomex, $ethiop, $ethiopic1, $ethiopic2, $ethiosoft, $ethiosys, $ethiosysx, $ethiowalia, $fidelxtr1, $fidelxtr2, $gezbausi, $gezedit, $gezedit98, $gezfont, $gezfree1, $gezfree2, $gezigna, $gezi, $gezii, $geznewa, $geznewb, $geztype, $ies, $image, $iso, $jis, $junet, $laser, $mainz, $monotype1, $monotype2, $monotype3, $monoalt, $mononum, $muletex, $nci, $ncic, $ncic_et, $omnitech, $powergez, $powergeznum, $qubee, $samwp, $sam98, $sera, $sil1, $sil2, $sil3, $tfanus, $tfanusnew, $unicode, $visualgez, $all );
 
 enumerate ( $notv, $clike, $decimal, $dos, $java, $uname, $uplus, $utf7, $utf8, $utf16, $zerox );
 
@@ -124,6 +117,11 @@ $uppercase    = 128;
 	'AddisWP'  				=>	[ 'AddisWP',					$samwp,			0,	2,	0,	'adis\\WP\\' ],
 
 #
+#	EthioWalia http://www.ethiowalia.com/
+#
+	'AMH3' 					=>	[ 'AMH3',					$ethiowalia,		0,	0,	1,	'\\AMH3\\' ],
+
+#
 #	Alpas http://www.webscape.co.uk/ethiopia/pc_house/
 #
 	'ET-Saba'  				=>	[ 'ET-Saba',					$alpas,			0,	0,	0,	'alpas' ],
@@ -186,6 +184,7 @@ $uppercase    = 128;
 #
 	'GFZemen' 				=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
 	'GF Zemen Secondary' 	=>	[ 'GF Zemen Secondary',			$gezfree1,		0,	1,	1,	'gI2z\\Free\\' ],
+	'GFZemen2K' 			=>	[ 'GF Zemen2K Primary',			$enhpfr,		0,	2,	1,	'gI2z\\Free2K\\' ],
 	'FirstTime' 			=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
 #	'ENHPFR'				=>	[ 'ENH Zena he',				$enhpfr,		0,	0,	1,	'\\ENHPFR\\'   ],
 	'ENHPFR' 				=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
@@ -210,6 +209,7 @@ $uppercase    = 128;
 #	Phonetic Systems http://www.geezsoft.com/
 #
 	'GeezType'  			=>	[ 'GeezType',					$geztype,		0,	0,	0,	'gI2\\Type\\'   ],
+	'GeezTypeNet' 			=>	[ 'GeezTypeNet',				$geztype,		0,	1,	0,	'gI2\\TypeNet\\'   ],
 
 #
 #	Power Ge'ez
@@ -381,8 +381,6 @@ $WITHAM       =  32; # /* Ihu Ter 15 11:13:50 EET 1990 `a.m    */
 $WITHSLASH    =  64; # /* Ihu Ter 15 11:13:50 EET 1990 `a/m    */
 $WITHDAYCOMMA = 128; # /* Ihu, Ter 15 11:13:50 EET 1990 `a/m   */
 $WITHUTF8     = 512; # /* Return UTF8 Encoded Names            */
-
-}  #  end if ( !$enumerated )
 
 
 sub LangNum

@@ -1,5 +1,8 @@
 Revision history for Perl extension Convert::Ethiopic.
 
+0.10 Fri Nov 27 08:56:27 EST 1999
+	- addition of EthioWalia and GFZemen2K systems.
+
 0.09 Sat Jul 31 21:10:31 EET DST 1999
 	- bug fix in System.pm for $monotype variable to become $monotype1.
 
