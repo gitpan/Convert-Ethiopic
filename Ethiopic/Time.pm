@@ -1,7 +1,7 @@
 package Convert::Ethiopic::Time;
 require 5.000;
 
-require Convert::Ethiopic;
+use Convert::Ethiopic;
 use Convert::Ethiopic::Cstocs;
 
 
@@ -32,6 +32,7 @@ my $self    = {};
 	$self->{request} = $request;
 
 	bless $self, $class;
+
 }
 
 
@@ -41,7 +42,7 @@ my $self = shift;
 
 
 	return ( 0 )
-		if ( Convert::Ethiopic::isBogusGregorianDate ( $self->{euDay}, $self->{euMonth}, $self->{euYear} ) );
+		if ( isBogusGregorianDate ( $self->{euDay}, $self->{euMonth}, $self->{euYear} ) );
 
 
 	#
@@ -50,7 +51,7 @@ my $self = shift;
 	#
 	local ($xDay, $xMonth, $xYear) = ($self->{euDay}, $self->{euMonth}, $self->{euYear});
 
-	Convert::Ethiopic::GregorianToEthiopic ( $xDay, $xMonth, $xYear );
+	GregorianToEthiopic ( $xDay, $xMonth, $xYear );
 
 	( $self->{etDay}, $self->{etMonth}, $self->{etYear} ) = ( $xDay, $xMonth, $xYear );
 
@@ -65,7 +66,7 @@ my $self = shift;
 
 
 	return ( 0 )
-		if ( Convert::Ethiopic::isBogusEthiopicDate ( $self->{etDay}, $self->{etMonth}, $self->{etYear} ) );
+		if ( isBogusEthiopicDate ( $self->{etDay}, $self->{etMonth}, $self->{etYear} ) );
 
 
 	#
@@ -74,7 +75,7 @@ my $self = shift;
 	#
 	local ($xDay, $xMonth, $xYear) = ($self->{etDay}, $self->{etMonth}, $self->{etYear});
 
-	Convert::Ethiopic::EthiopicToGregorian ( $xDay, $xMonth, $xYear );
+	EthiopicToGregorian ( $xDay, $xMonth, $xYear );
 
 	( $self->{euDay}, $self->{euMonth}, $self->{euYear} ) = ( $xDay, $xMonth, $xYear );
 
@@ -88,7 +89,7 @@ sub isEthiopianHoliday
 my $self = shift;
 
 
-	return ( Convert::Ethiopic::isEthiopianHoliday ( $self->{etDay}, $self->{etMonth}, $self->{etYear}, $self->{request}->{sysOut}->{LCInfo} ) );
+	return ( isEthiopianHoliday ( $self->{etDay}, $self->{etMonth}, $self->{etYear}, $self->{request}->{sysOut}->{LCInfo} ) );
 
 }
 
@@ -100,7 +101,7 @@ my $self = shift;
 
 	$self->EthiopicToGregorian if !( $self->{euDay} || $self->{euMonth} || $self->{euYear} );
 
-	return ( ( "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" )[ Convert::Ethiopic::GregorianToFixed ( $self->{euDay}, $self->{euMonth}, $self->{euYear} ) % 7 ] );
+	return ( ( "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" )[ GregorianToFixed ( $self->{euDay}, $self->{euMonth}, $self->{euYear} ) % 7 ] );
 
 }
 
@@ -125,7 +126,7 @@ my $self = shift;
 	$self->GregorianToEthiopic if !( $self->{etDay} || $self->{etMonth} || $self->{etYear} );
 
 
-	return ( Convert::Ethiopic::getEthiopicMonth ( $self->{etMonth}, $self->{request}->{langNum}, $self->{request}->{sysOut}->{LCInfo} ) );
+	return ( getEthiopicMonth ( $self->{etMonth}, $self->{request}->{langNum}, $self->{request}->{sysOut}->{LCInfo} ) );
 
 }
 
@@ -150,10 +151,10 @@ my $self = shift;
 	$self->{request}->{sysOut}->{xferNum} = $tempxferOutNum;
 
 	return (
-		Convert::Ethiopic::getEthiopicDayOfWeek ( $self->{etDay}, $self->{etMonth}, $self->{etYear}, $self->{request}->{langNum}, $self->{request}->{sysOut}->{LCInfo} ),
-		Convert::Ethiopic::getEthiopicMonth ( $self->{etMonth}, $self->{request}->{langNum}, $self->{request}->{sysOut}->{LCInfo} ),
+		getEthiopicDayOfWeek ( $self->{etDay}, $self->{etMonth}, $self->{etYear}, $self->{request}->{langNum}, $self->{request}->{sysOut}->{LCInfo} ),
+		getEthiopicMonth ( $self->{etMonth}, $self->{request}->{langNum}, $self->{request}->{sysOut}->{LCInfo} ),
 	    $Y,
-		Convert::Ethiopic::getEthiopicDayName ( $self->{etDay}-1, $self->{etMonth}, $self->{request}->{sysOut}->{LCInfo} )
+		getEthiopicDayName ( $self->{etDay}-1, $self->{etMonth}, $self->{request}->{sysOut}->{LCInfo} )
 	);
 
 }
@@ -174,7 +175,7 @@ Ethiopic::Time - conversions of calendar systems to/from Ethiopic and Gregorian.
 =head1 SYNOPSIS
 
   use LiveGeez::Request;
-  use Convert::Ethiopic::Time;
+  require Convert::Ethiopic::Time;
   my $r = LiveGeez::Request->new;
 
 	ReadParse ( \%input );

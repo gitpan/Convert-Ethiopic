@@ -1,5 +1,9 @@
 Revision history for Perl extension Convert::Ethiopic.
 
+0.07 Wed Jun 30 03:02:48 EET DST 1999
+	- updates to "System.pm" to better detect typeface names in HTML
+	  files.
+
 0.06 Sat May 15 21:49:26 EET DST 1999
 	- emergency bug fix release for Convert::System.
 	- rechristianed "Convert-Ethiopic".

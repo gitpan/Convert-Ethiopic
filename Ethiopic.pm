@@ -6,10 +6,13 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 #  Correct the below to where you will install Et.so and libeth.so.
 #  If already in your load path then comment out altogether.
 #
-# $ENV{'LD_LIBRARY_PATH'} = '/home2/enh/HTML/cgi';
-# $ENV{'LD_PRELOAD'} = '/usr/temp/libeth/play/LibEth/lib/libeth.so.0.3.3';
-# $ENV{'LD_LIBRARY_PATH'} = '/usr/temp/libeth/play/LibEth/cgi';
-$ENV{'LD_LIBRARY_PATH'} = '/home/web/htdocs/ENH/cgi';
+$ENV{'LD_LIBRARY_PATH'} = '/home2/ethionet/HTML/cgi';
+
+#
+#  You shouldn't need these...
+#
+# $ENV{'LD_PRELOAD'} = '/home2/ethionet/HTML/cgi/libeth.so.0.3.3';
+# $ENV{'LD_LIBRARY_PATH'} = '/home2/ethionet/HTML/cgi';
 
 require Exporter;
 require DynaLoader;
@@ -42,7 +45,7 @@ require AutoLoader;
     GregorianToEthiopic
     easctime
 );
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 bootstrap Convert::Ethiopic $VERSION;
 
@@ -73,7 +76,7 @@ implementation of the LiveGe'ez Remote Processing Protocol.
 =head1 STATUS
 
 This is the third release of the LibEth Perl module and requires the "LibEth"
-library version 0.34b or later.
+library version 0.35c or later.
 
 The LibEth Perl Module is very early in its life cycle, extensions will be
 made to further utilize the LibEth library through Perl as the need arises.

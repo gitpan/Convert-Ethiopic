@@ -7,9 +7,8 @@ require Exporter;
 			EthiopicNumber
 			);
 
-require Convert::Ethiopic;
-use Convert::Ethiopic::System;
-use HTML::Entities;
+use Convert::Ethiopic;
+require HTML::Entities;
 
 
 #------------------------------------------------------------------------------#
@@ -29,7 +28,7 @@ my $r = shift;
 	local ( $sysOut ) = ( $r->{sysOut}->HasENumbers ) 
 					  ? $r->{sysOut}->{sysNum} : $image;
 
-	local ( $eNumber ) = Convert::Ethiopic::ArabToEthiopic (
+	local ( $eNumber ) = ArabToEthiopic (
 		$r->{number},
 		$r->{sysOut}->{sysNum},
 		$r->{sysOut}->{xferNum},
@@ -42,7 +41,8 @@ my $r = shift;
 	return ( HTML::Entities::encode($eNumber, "\200-\377") )
 		if ( $r->{sysOut}->{'7-bit'} );
 
-	return ( $eNumber );
+	$eNumber;
+
 }
 
 
@@ -52,7 +52,7 @@ my $class      = shift;
 my ($in, $out) = (shift, shift);
 
 $fntext = ' sub {
-	local ( $eString ) = Convert::Ethiopic::ConvertEthiopicString (
+	local ( $eString ) = ConvertEthiopicString (
 		$_[0],
 		$in->{sysNum},
 		$in->{xferNum},
@@ -74,6 +74,7 @@ $fntext = ' sub {
 	bless $fn, $class;
 
 	$fn;
+
 }
 
 
@@ -99,7 +100,7 @@ Ethiopic::Cstocs - conversions of charset encodings for Ethiopic script
 =head1 SYNOPSIS
 
   use LiveGeez::Request;
-  use Convert::Ethiopic::Cstocs;
+  require Convert::Ethiopic::Cstocs;
   my $r = LiveGeez::Request->new;
 
 	ReadParse ( \%input );
