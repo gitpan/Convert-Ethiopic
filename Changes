@@ -1,5 +1,9 @@
 Revision history for Perl extension Convert::Ethiopic.
 
+0.12 Thu Feb 17 21:10:19 EST 2000
+	- moved ethiosys to ethiosysx for secondary fonts.
+	- added enumeration calls to BEGIN method.
+
 0.11 Sun Jan 30 20:46:53 EST 2000
 	- addition of new GeezFont typefaces AddisB1, AddisL1, AddisT1.
 	- $VERSION added to all .pm files.

@@ -1,6 +1,6 @@
 package Convert::Ethiopic::System;
 
-$VERSION = '0.10';
+$VERSION = '0.12';
 
 require 5.000;
 require Exporter;
@@ -49,11 +49,17 @@ my ($index) = 0;
 }
 
 
-enumerate ( $TTName, $LESysNum, $LESysTV, $LEFontNum, $HasNum, $HTMLName );
 
-enumerate ( $nocs, $acis, $acuwork, $addisword1, $addisword2, $alpas, $branai, $branaii, $cbhalea, $cbhaleb, $dehai, $dejene1, $dejene2, $ecoling, $ed, $enhpfr, $ethcitap, $ethcitas, $ethcitau, $ethiome, $ethiomex, $ethiop, $ethiopic1, $ethiopic2, $ethiosoft, $ethiosys, $ethiosysx, $ethiowalia, $fidelxtr1, $fidelxtr2, $gezbausi, $gezedit, $gezedit98, $gezfont, $gezfree1, $gezfree2, $gezigna, $gezi, $gezii, $geznewa, $geznewb, $geztype, $ies, $image, $iso, $jis, $junet, $laser, $mainz, $monotype1, $monotype2, $monotype3, $monoalt, $mononum, $muletex, $nci, $ncic, $ncic_et, $omnitech, $powergez, $powergeznum, $qubee, $samwp, $sam98, $sera, $sil1, $sil2, $sil3, $tfanus, $tfanusnew, $unicode, $visualgez, $all );
+sub BEGIN
+{
 
-enumerate ( $notv, $clike, $decimal, $dos, $java, $uname, $uplus, $utf7, $utf8, $utf16, $zerox );
+	enumerate ( $TTName, $LESysNum, $LESysTV, $LEFontNum, $HasNum, $HTMLName );
+
+	enumerate ( $nocs, $acis, $acuwork, $addisword1, $addisword2, $alpas, $branai, $branaii, $cbhalea, $cbhaleb, $dehai, $dejene1, $dejene2, $ecoling, $ed, $enhpfr, $ethcitap, $ethcitas, $ethcitau, $ethiome, $ethiomex, $ethiop, $ethiopic1, $ethiopic2, $ethiosoft, $ethiosys, $ethiosysx, $ethiowalia, $fidelxtr1, $fidelxtr2, $gezbausi, $gezedit, $gezedit98, $gezfont, $gezfree1, $gezfree2, $gezigna, $gezi, $gezii, $geznewa, $geznewb, $geztype, $ies, $image, $iso, $jis, $junet, $laser, $mainz, $monotype1, $monotype2, $monotype3, $monoalt, $mononum, $muletex, $nci, $ncic, $ncic_et, $omnitech, $powergez, $powergeznum, $qubee, $samwp, $sam98, $sera, $sil1, $sil2, $sil3, $tfanus, $tfanusnew, $unicode, $visualgez, $all );
+
+	enumerate ( $notv, $clike, $decimal, $dos, $java, $uname, $uplus, $utf7, $utf8, $utf16, $zerox );
+
+}
 
 $noOps        =   0;
 $aynIsZero    =   1;
@@ -151,21 +157,21 @@ $uppercase    = 128;
 #	EthiO Systems Fonts http://www.neosoft.com/~ethiosys/
 #
 	'Ethiopia'				=>	[ 'Ethiopia Primary',			$ethiosys,		 0,	0,	1,	'ityo\\Systems\\ ityoPya' ],
-	'Ethiopia Secondary'	=>	[ 'Ethiopia Secondary',			$ethiosys,		 0,	1,	1,	'ityo\\Systems\\ ityoPya' ],
+	'Ethiopia Secondary'	=>	[ 'Ethiopia Secondary',			$ethiosysx,		 0,	1,	1,	'ityo\\Systems\\ ityoPya' ],
 	'EthiopiaSlanted'		=>	[ 'Ethiopia Primary Slanted',	$ethiosys,		 0,	2,	1,	'ityo\\Systems\\ ityoPya' ],
 	'Ethiopia Secondary Slanted'
-  							=>	[ 'Ethiopia Secondary Slanted',	$ethiosys,		 0,	3,	1,	'ityo\\Systems\\ ityoPya' ],
+  							=>	[ 'Ethiopia Secondary Slanted',	$ethiosysx,		 0,	3,	1,	'ityo\\Systems\\ ityoPya' ],
 	'EthiopiaAnsiP' 		=>	[ 'EthiopiaAnsiP',				$ethiosys,		 0,	4,	1,	'ityo\\Systems\\ ityoPya\\ANSI\\' ],
-	'EthiopiaAnsiS' 		=>	[ 'EthiopiaAnsiS',				$ethiosys,		 0,	5,	1,	'ityo\\Systems\\ ityoPya\\ANSI\\' ],
+	'EthiopiaAnsiS' 		=>	[ 'EthiopiaAnsiS',				$ethiosysx,		 0,	5,	1,	'ityo\\Systems\\ ityoPya\\ANSI\\' ],
 	'Washra' 				=>	[ 'Washra  Primary',			$ethiosys,		 0,	6,	1,	'ityo\\Systems\\ waxra'   ],
-	'Washrax Secondary' 	=>	[ 'Washrax Secondary',			$ethiosys,		 0,	7,	1,	'ityo\\Systems\\ waxra'   ],
+	'Washrax Secondary' 	=>	[ 'Washrax Secondary',			$ethiosysx,		 0,	7,	1,	'ityo\\Systems\\ waxra'   ],
 	'Washrasl'				=>	[ 'Washrasl  Primary Slanted',	$ethiosys,		 0,	8,	1,	'ityo\\Systems\\ waxra'   ],
 	'Washraxsl Secondary Slanted'
-							=>	[ 'Washraxsl Secondary Slanted',$ethiosys,		 0,	9,	1,	'ityo\\Systems\\ waxra'   ],
+							=>	[ 'Washraxsl Secondary Slanted',$ethiosysx,		 0,	9,	1,	'ityo\\Systems\\ waxra'   ],
 	'Wookianos'				=>	[ 'Wookianos Primary',			$ethiosys,		 0,	10,	1,	'ityo\\Systems\\ wqyanos' ],
-	'Wookianos Secondary'	=>	[ 'Wookianos Secondary',		$ethiosys,		 0,	11,	1,	'ityo\\Systems\\ wqyanos' ],
+	'Wookianos Secondary'	=>	[ 'Wookianos Secondary',		$ethiosysx,		 0,	11,	1,	'ityo\\Systems\\ wqyanos' ],
 	'Yebse' 				=>	[ 'YebSe Primary',				$ethiosys,		 0,	12,	1,	'ityo\\Systems\\ ybSe'    ],
-	'YebSe Secondary'		=>	[ 'YebSe Secondary',			$ethiosys,		 0,	13,	1,	'ityo\\Systems\\ ybSe'    ],
+	'YebSe Secondary'		=>	[ 'YebSe Secondary',			$ethiosysx,		 0,	13,	1,	'ityo\\Systems\\ ybSe'    ],
 
 
 #
@@ -189,7 +195,7 @@ $uppercase    = 128;
 #	Ge'ezFree Zemen ftp://ftp.abyssiniacybergateway.net/pub/users/abyssini/fonts/TrueType/InstallHelp.html
 #
 	'GFZemen' 				=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
-	'GF Zemen Secondary' 	=>	[ 'GF Zemen Secondary',			$gezfree1,		0,	1,	1,	'gI2z\\Free\\' ],
+	'GF Zemen Secondary' 	=>	[ 'GF Zemen Secondary',			$gezfree2,		0,	1,	1,	'gI2z\\Free\\' ],
 	'GFZemen2K' 			=>	[ 'GF Zemen2K Primary',			$enhpfr,		0,	2,	1,	'gI2z\\Free2K\\' ],
 	'FirstTime' 			=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
 #	'ENHPFR'				=>	[ 'ENH Zena he',				$enhpfr,		0,	0,	1,	'\\ENHPFR\\'   ],

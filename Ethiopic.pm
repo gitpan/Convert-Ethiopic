@@ -45,7 +45,7 @@ require AutoLoader;
     GregorianToEthiopic
     easctime
 );
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 bootstrap Convert::Ethiopic $VERSION;
 
