@@ -12,17 +12,23 @@ use Convert::Ethiopic;
 use Convert::Ethiopic::System;
 $loaded = 1;
 
+my $in  = new Convert::Ethiopic::System ( "sera" );
+my $out = new Convert::Ethiopic::System ( "UTF8" );
+
 print "ok 1  It loaded.\n";
 printf "ok 2  %f\n", Convert::Ethiopic::LibEthVersion;
 printf "ok 3  %s\n", Convert::Ethiopic::LibEthVersionName;
-printf "ok 4  %s\n", Convert::Ethiopic::ArabToEthiopic ("1991", $unicode, $utf8, 0, "/f");
-printf "ok 5  %s\n", Convert::Ethiopic::ConvertEthiopicString ("beqa! y`seral...", $sera, 0, $unicode, $utf8, 0, $amh, "/f", 0, 1);
-open (TESTLE, "Hello.sera") || die ("!: Can't Open Hello.sera!\n");
-print "ok 6 (text above is ok)\n", Convert::Ethiopic::ConvertEthiopicFile (\*TESTLE, STDOUT, $sera, 0, $unicode, $utf8, 0, $amh, "/f", 0);
+printf "ok 4  %s\n", Convert::Ethiopic::ArabToEthiopic ("1991", $out );
+printf "ok 5  %s\n", Convert::Ethiopic::ConvertEthiopicString ("beqa! y`seral...", $in, $out, 1);
+
+open (TESTLE, "t/Hello.sera") || die ("!: Can't Open Hello.sera!\n");
+print "ok 6 (text above is ok)\n", Convert::Ethiopic::ConvertEthiopicFile (\*TESTLE, STDOUT, $in, $out);
 close (TESTLE);
-open (TESTLE, "Hello.sera") || die ("!: Can't Open Hello.sera!\n");
-printf "ok 7  %s\n", Convert::Ethiopic::ConvertEthiopicFileToString (\*TESTLE, $sera, 0, $unicode, $utf8, 0, $amh, "/f", 0);
+
+open (TESTLE, "t/Hello.sera") || die ("!: Can't Open Hello.sera!\n");
+printf "ok 7  %s\n", Convert::Ethiopic::ConvertEthiopicFileToString (\*TESTLE, $in, $out);
 close (TESTLE);
+
 printf "ok 8  %s\n", Convert::Ethiopic::easctime (localtime, $eng, $amh, 512);
 
 ######################### End of black magic.

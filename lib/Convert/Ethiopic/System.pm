@@ -1,12 +1,27 @@
 package Convert::Ethiopic::System;
+use base qw(Exporter);
 
-$VERSION = '0.12';
 
-require 5.000;
-require Exporter;
+sub enumerate
+{
+my ($index) = 0;
 
-@ISA = qw(Exporter);
-@EXPORT = qw(
+  foreach (@_) {
+	  $_ =  $index++;
+  }
+}
+
+
+sub BEGIN
+{
+
+	$VERSION = '0.14';
+
+	require 5.000;
+	require Exporter;
+
+	@ISA = qw(Exporter);
+	@EXPORT = qw(
 			$noOps
 			$debug
 			$ethOnly
@@ -36,40 +51,26 @@ require Exporter;
 			$gez
 			$orm
 			$tir
+
+			%ISOLanguages;
 			);
-
-
-sub enumerate
-{
-my ($index) = 0;
-
-  foreach (@_) {
-	  $_ =  $index++;
-  }
-}
-
-
-
-sub BEGIN
-{
 
 	enumerate ( $TTName, $LESysNum, $LESysTV, $LEFontNum, $HasNum, $HTMLName );
 
-	enumerate ( $nocs, $acis, $acuwork, $addisword1, $addisword2, $alpas, $branai, $branaii, $cbhalea, $cbhaleb, $dehai, $dejene1, $dejene2, $ecoling, $ed, $enhpfr, $ethcitap, $ethcitas, $ethcitau, $ethiome, $ethiomex, $ethiop, $ethiopic1, $ethiopic2, $ethiosoft, $ethiosys, $ethiosysx, $ethiowalia, $fidelxtr1, $fidelxtr2, $gezbausi, $gezedit, $gezedit98, $gezfont, $gezfree1, $gezfree2, $gezigna, $gezi, $gezii, $geznewa, $geznewb, $geztype, $ies, $image, $iso, $jis, $junet, $laser, $mainz, $monotype1, $monotype2, $monotype3, $monoalt, $mononum, $muletex, $nci, $ncic, $ncic_et, $omnitech, $powergez, $powergeznum, $qubee, $samwp, $sam98, $sera, $sil1, $sil2, $sil3, $tfanus, $tfanusnew, $unicode, $visualgez, $all );
+	enumerate ( $nocs, $acis, $acuwork, $addisword1, $addisword2, $alpas, $branai, $branaii, $cbhalea, $cbhaleb, $dehai, $dejene1, $dejene2, $ecoling, $ed, $enhpfr, $ethcitap, $ethcitas, $ethcitau, $ethiome, $ethiomex, $ethiop, $ethiopic1, $ethiopic2, $ethiosoft, $ethiosys, $ethiosysx, $ethiowalia, $fidelxtr1, $fidelxtr2, $gezbausi, $gezedit, $gezedit98, $gezfont, $gezfree1, $gezfree2, $gezigna, $gezi, $gezii, $geznewa, $geznewb, $geztype, $geztypenet, $ies, $image, $iso, $jis, $junet, $laser, $mainz, $monotype1, $monotype2, $monotype3, $monoalt, $mononum, $muletex, $nci, $ncic, $ncic_et, $omnitech, $powergez, $powergeznum, $qubee, $samwp, $sam98, $sera, $sil1, $sil2, $sil3, $tfanus, $tfanusnew, $unicode, $visualgez, $visualgez2k, $wazema1, $wazema2, $all );
 
 	enumerate ( $notv, $clike, $decimal, $dos, $java, $uname, $uplus, $utf7, $utf8, $utf16, $zerox );
 
-}
 
-$noOps        =   0;
-$aynIsZero    =   1;
-$debug        =   2;
-$ethOnly      =   4;
-$gColon       =   8;
-$qMark        =  16;
-$gSpace       =  32;
-$ungeminate   =  64;
-$uppercase    = 128;
+	$noOps        =   0;
+	$aynIsZero    =   1;
+	$debug        =   2;
+	$ethOnly      =   4;
+	$gColon       =   8;
+	$qMark        =  16;
+	$gSpace       =  32;
+	$ungeminate   =  64;
+	$uppercase    = 128;
 
 
 %FontInfo = (
@@ -106,6 +107,14 @@ $uppercase    = 128;
 #	HTML Display Name  :  A SERA string for the font name itself as it would appear in Ethiopic HTML.
 #
 ##############################################################################################################################################
+
+#
+#	Wazema http://members.aol.com/w4z5m4/wazema.html
+#
+	'A1-Desta' 			=>	[ 'A1 Desta',				$wazema1,		0,	0,	0,	'\\A1 \\desta' ],
+	'A2-Desta' 			=>	[ 'A2 Desta',				$wazema2,		0,	1,	1,	'\\A2 \\desta' ],
+	'A1-Tesfa' 			=>	[ 'A1 Tesfa',				$wazema1,		0,	2,	0,	'\\A1 \\tesfa' ],
+	'A2-Tesfa' 			=>	[ 'A2 Tesfa',				$wazema2,		0,	3,	1,	'\\A2 \\tesfa' ],
 
 #
 #	Alex Ethiopian http://www.acuwork.com/
@@ -172,6 +181,8 @@ $uppercase    = 128;
 	'Wookianos Secondary'	=>	[ 'Wookianos Secondary',		$ethiosysx,		 0,	11,	1,	'ityo\\Systems\\ wqyanos' ],
 	'Yebse' 				=>	[ 'YebSe Primary',				$ethiosys,		 0,	12,	1,	'ityo\\Systems\\ ybSe'    ],
 	'YebSe Secondary'		=>	[ 'YebSe Secondary',			$ethiosysx,		 0,	13,	1,	'ityo\\Systems\\ ybSe'    ],
+	'Ethiopia-Jiret' 		=>	[ 'Ethiopia Jiret Set I',				$ethiosys,		 0,	14,	1,	'ityo\\Systems\\ jret'    ],
+	'Ethiopia Jiret Set II'		=>	[ 'Ethiopia Jiret Set II',			$ethiosysx,		 0,	15,	1,	'ityo\\Systems\\ jret'    ],
 
 
 #
@@ -196,8 +207,8 @@ $uppercase    = 128;
 #
 	'GFZemen' 				=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
 	'GF Zemen Secondary' 	=>	[ 'GF Zemen Secondary',			$gezfree2,		0,	1,	1,	'gI2z\\Free\\' ],
-	'GFZemen2K' 			=>	[ 'GF Zemen2K Primary',			$enhpfr,		0,	2,	1,	'gI2z\\Free2K\\' ],
-	'FirstTime' 			=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
+	'GFZemen2K' 			=>	[ 'GF Zemen2K Ahadu',			$enhpfr,		0,	2,	1,	'gI2z\\Free2K\\' ],
+	# 'FirstTime' 			=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
 #	'ENHPFR'				=>	[ 'ENH Zena he',				$enhpfr,		0,	0,	1,	'\\ENHPFR\\'   ],
 	'ENHPFR' 				=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
 
@@ -221,7 +232,7 @@ $uppercase    = 128;
 #	Phonetic Systems http://www.geezsoft.com/
 #
 	'GeezType'  			=>	[ 'GeezType',					$geztype,		0,	0,	0,	'gI2\\Type\\'   ],
-	'GeezTypeNet' 			=>	[ 'GeezTypeNet',				$geztype,		0,	1,	0,	'gI2\\TypeNet\\'   ],
+	'GeezTypeNet' 			=>	[ 'GeezTypeNet',				$geztypenet,		0,	1,	0,	'gI2\\TypeNet\\'   ],
 
 #
 #	Power Ge'ez
@@ -321,6 +332,7 @@ $uppercase    = 128;
 	'UTF8' 					=>	[ 'none',						$unicode,	 $utf8,	0,	1,	'\\UTF8\\'  ],
 	'utf16'  				=>	[ 'none',						$unicode,	$utf16,	0,	1,	'\\UTF16\\' ],
 	'unicode' 				=>	[ 'none',						$unicode,	$utf16,	0,	1,	'\\UTF16\\' ],
+	'FirstTime' 				=>	[ 'none',						$unicode,	 $utf8,	0,	1,	'\\UTF8\\'  ],
 
 #
 #	Visual Ge'ez
@@ -328,6 +340,13 @@ $uppercase    = 128;
 	'VG2-Main'				=>	[ 'VG2 Main',					$visualgez,		0,	0,	0,	'\\Visual\\gI2z' ],
 	'VG2-Agazian'			=>	[ 'VG2 Agazian',				$visualgez,		0,	1,	0,	'\\Visual\\gI2z' ],
 	'VG2-Title'	 			=>	[ 'VG2 Title',					$visualgez,		0,	2,	0,	'\\Visual\\gI2z' ],
+
+#
+#	Visual Ge'ez 2000
+#
+	'VG2K-Main'				=>	[ 'VG2000 Main',				$visualgez2k,		0,	0,	0,	'\\Visual\\gI2z\\2K' ],
+	'VG2K-Agazian'				=>	[ 'VG2000 Agazian',				$visualgez2k,		0,	1,	0,	'\\Visual\\gI2z\\2K' ],
+	'VG2K-Title'	 			=>	[ 'VG2000 Title',				$visualgez2k,		0,	2,	0,	'\\Visual\\gI2z\\2K' ],
 
 #
 #	Unknown Companies
@@ -368,18 +387,107 @@ $uppercase    = 128;
 );
 
 
-enumerate ($amh, $eng, $gez, $orm, $tir);
+enumerate ( $aiz, $aar, $qim, $zlb, $amh, $myo, $anu, $arv, $agj, $awn, $bsw, $myf, $bst, $bej, $bcq, $wti, $byn, $bxe, $bwo, $bji, $dox, $cra, $dsh, $dim, $gdl, $mdx, $doz, $gft, $gmo, $gza, $gwd, $drs, $gez, $gto, $guk, $guy, $gru, $zgu, $hdy, $amf, $har, $hoz, $kcx, $koe, $kbr, $ktb, $kxh, $zkn, $zko, $kxc, $kqy, $bza, $xuf, $kmq, $zkw, $liq, $mpe, $mdy, $mym, $mfx, $mys, $mur, $muz, $nrb, $noz, $nus, $nnj, $lgn, $gax, $hae, $orm, $oyd, $rer, $ssy, $sze, $sbf, $moy, $she, $sid, $som, $suq, $tig, $tir, $tsb, $udu, $woy, $wbc, $xan, $jnj, $zwa, $zay,  $eng, $lat, $gre, $gfx, $uni, $undef, $useLC );
 
-%ISOLanguages = ( am        => $amh,
-			 	  en	    => eng,
-				  ti        => $tir,
-				  om        => $orm,
-				  gz	    => $gez,
-				  amh       => $amh,
-				  eng       => $eng,
-				  orm       => $orm,
-				  tir       => $tir,
-				  gez       => $gez,
+%ISOLanguages = (
+	aiz	=>	$aiz,
+	aar	=>	$aar,
+	qim	=>	$qim,
+	zlb	=>	$zlb,
+	amh	=>	$amh,
+	myo	=>	$myo,
+	anu	=>	$anu,
+	arv	=>	$arv,
+	agj	=>	$agj,
+	awn	=>	$awn,
+	bsw	=>	$bsw,
+	myf	=>	$myf,
+	bst	=>	$bst,
+	bej	=>	$bej,
+	bcq	=>	$bcq,
+	wti	=>	$wti,
+	byn	=>	$byn,
+	bxe	=>	$bxe,
+	bwo	=>	$bwo,
+	bji	=>	$bji,
+	dox	=>	$dox,
+	cra	=>	$cra,
+	dsh	=>	$dsh,
+	dim	=>	$dim,
+	gdl	=>	$gdl,
+	mdx	=>	$mdx,
+	doz	=>	$doz,
+	gft	=>	$gft,
+	gmo	=>	$gmo,
+	gza	=>	$gza,
+	gwd	=>	$gwd,
+	drs	=>	$drs,
+	gez	=>	$gez,
+	gto	=>	$gto,
+	guk	=>	$guk,
+	guy	=>	$guy,
+	gru	=>	$gru,
+	zgu	=>	$zgu,
+	hdy	=>	$hdy,
+	amf	=>	$amf,
+	har	=>	$har,
+	hoz	=>	$hoz,
+	kcx	=>	$kcx,
+	koe	=>	$koe,
+	kbr	=>	$kbr,
+	ktb	=>	$ktb,
+	kxh	=>	$kxh,
+	zkn	=>	$zkn,
+	zko	=>	$zko,
+	kxc	=>	$kxc,
+	kqy	=>	$kqy,
+	bza	=>	$bza,
+	xuf	=>	$xuf,
+	kmq	=>	$kmq,
+	zkw	=>	$zkw,
+	liq	=>	$liq,
+	mpe	=>	$mpe,
+	mdy	=>	$mdy,
+	mym	=>	$mym,
+	mfx	=>	$mfx,
+	mys	=>	$mys,
+	mur	=>	$mur,
+	muz	=>	$muz,
+	nrb	=>	$nrb,
+	noz	=>	$noz,
+	nus	=>	$nus,
+	nnj	=>	$nnj,
+	lgn	=>	$lgn,
+	gax	=>	$gax,
+	hae	=>	$hae,
+	orm	=>	$orm,
+	oyd	=>	$oyd,
+	rer	=>	$rer,
+	ssy	=>	$ssy,
+	sze	=>	$sze,
+	sbf	=>	$sbf,
+	moy	=>	$moy,
+	she	=>	$she,
+	sid	=>	$sid,
+	som	=>	$som,
+	suq	=>	$suq,
+	tig	=>	$tig,
+	tir	=>	$tir,
+	tsb	=>	$tsb,
+	udu	=>	$udu,
+	woy	=>	$woy,
+	wbc	=>	$wbc,
+	xan	=>	$xan,
+	jnj	=>	$jnj,
+	zwa	=>	$zwa,
+	zay	=>	$zay,
+	eng	=>	$eng,
+	lat	=>	$lat,
+	gre	=>	$gre,
+	gfx	=>	$gfx,
+	uni	=>	$uni,
+	undef	=>	$undef,
+	useLC	=>	$useLC
 );
 
 
@@ -394,10 +502,12 @@ $WITHSLASH    =  64; # /* Ihu Ter 15 11:13:50 EET 1990 `a/m    */
 $WITHDAYCOMMA = 128; # /* Ihu, Ter 15 11:13:50 EET 1990 `a/m   */
 $WITHUTF8     = 512; # /* Return UTF8 Encoded Names            */
 
+}  # End BEGIN
+
 
 sub LangNum
 {
-my ($self, $lang) = (shift,shift);
+my ($self, $lang) = @_;
 
 
 	$self->{lang}    = $lang if ( $lang );
@@ -409,7 +519,7 @@ my ($self, $lang) = (shift,shift);
 
 sub TTName
 {
-my ($self, $sysName) = (shift,shift);
+my ($self, $sysName) = @_;
 
 
 	$self->{sysName} = $sysName if ( $sysName );
@@ -421,27 +531,24 @@ my ($self, $sysName) = (shift,shift);
 
 sub SysNum
 {
-my ($self, $sysName) = (shift,shift);
+my ($self, $sysName) = @_;
 
 
 	$self->{sysName} = $sysName if ( $sysName );
 
-	if ( $FontInfo{$self->{sysName}}[$LESysNum] ) {
-	   $self->{sysNum} = $FontInfo{$self->{sysName}}[$LESysNum];
-	} else {
-		# unfortunately testing for the hash element created the
-		# hash element, maybe a bug with this version of Perl?
-		delete ( $FontInfo{$self->{sysName}} ) ;
-	}
-
-	$self->{sysNum};
-
+	( exists( $FontInfo{$self->{sysName}} ) &&  $FontInfo{$self->{sysName}}[$LESysNum] )
+	?
+	   $self->{sysNum} = $FontInfo{$self->{sysName}}[$LESysNum]
+	:
+	   undef
+	;
+	
 }
 
 
 sub XferNum
 {
-my ($self, $xfer) = (shift,shift);
+my ($self, $xfer) = @_;
 
 
 	$self->{xfer}    = $xfer if ( $xfer );
@@ -453,7 +560,7 @@ my ($self, $xfer) = (shift,shift);
 
 sub SysXfer
 {
-my ($self, $xfer) = (shift,shift);
+my ($self, $xfer) = @_;
 
 
 	if ( $xfer ) {
@@ -462,9 +569,9 @@ my ($self, $xfer) = (shift,shift);
 	} else {
 		$self->{xferNum} = $FontInfo{$self->{sysName}}[$LESysTV];
 
-		foreach $key (keys %TransferVariant) {
-			if ( $self->{xferNum} == $TransferVariant{$key} ) {
-				$self->{xfer} = $key;
+		foreach (keys %TransferVariant) {
+			if ( $self->{xferNum} == $TransferVariant{$_} ) {
+				$self->{xfer} = $_;
 				last;
 			}
 		}
@@ -475,7 +582,7 @@ my ($self, $xfer) = (shift,shift);
 
 sub HTMLName
 {
-my ($self, $sysName)  = (shift,shift);
+my ($self, $sysName) = @_;
 
 
 	$self->{sysName}  = $sysName if ( $sysName );
@@ -487,7 +594,7 @@ my ($self, $sysName)  = (shift,shift);
 
 sub FontNum
 {
-my ($self, $sysName) = (shift,shift);
+my ($self, $sysName) = @_;
 
 
 	$self->{sysName} = $sysName if ( $sysName );
@@ -499,7 +606,7 @@ my ($self, $sysName) = (shift,shift);
 
 sub HasENumbers
 {
-my ($self, $sysName) = (shift,shift);
+my ($self, $sysName) = @_;
 
 
 	$self->{sysName} = $sysName if ( $sysName );
@@ -511,7 +618,7 @@ my ($self, $sysName) = (shift,shift);
 
 sub SysNameFromTrueTypeName
 {
-my ($self, $sysName) = (shift,shift);
+my ($self, $sysName) = @_;
 
 
 	$sysName = $self->{sysName} unless ( $sysName );
@@ -520,19 +627,40 @@ my ($self, $sysName) = (shift,shift);
 	local (@fontNames) = split ( /,/, lc($sysName) );
 
 	while ( ($sysName = shift @fontNames) ) {
-		foreach $key (keys %FontInfo) {
-			if ( $sysName eq lc($FontInfo{$key}[$TTName])
-				 || $sysName eq lc($key) )
+		foreach (keys %FontInfo) {
+			if ( $sysName eq lc($FontInfo{$_}[$TTName])
+				 || $sysName eq lc($_) )
 		 	{
-				$self->{sysName} = $key;
+				$self->{sysName} = $_;
 				goto ENDWHILE;
 			}
 		}
 	}
 	ENDWHILE:
 
-	$self->SysNum;  # since we reach here from a SysNum failure
+	( $self->{sysName} ) ? $self->SysNum : undef ;  # since we reach here from a SysNum failure
 
+}
+
+
+sub systems
+{
+	keys %FontInfo;
+}
+
+
+sub _init
+{
+my $self = shift;
+
+	$self->{sysName} = $_[0];
+  	return  unless ( $self->SysNum || $self->SysNameFromTrueTypeName );
+  	$self->SysXfer;
+  	$self->FontNum;
+	$self->{options} = 0;
+	$self->{langNum} = $amh;
+
+	1;
 }
 
 
@@ -544,9 +672,7 @@ my $self  = {};
 	
 	$blessing = bless $self, $class;
 
-	$self->{sysName} = shift;
-  	return (0) if  !( $self->SysNum || $self->SysNameFromTrueTypeName );
-  	$self->SysXfer;
+	return unless ( $self->_init ( @_ ) );
 
 	$blessing;
 

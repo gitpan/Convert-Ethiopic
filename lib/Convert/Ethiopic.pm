@@ -29,23 +29,24 @@ require AutoLoader;
 	ConvertEthiopicFile
 	ConvertEthiopicFileToString
 	ArabToEthiopic
-	isLeapYear
-	isEthiopicLeapYear
-	isEthiopianHoliday
-	getEthiopicMonth
-	getEthiopicDayOfWeek
-	getEthiopicDayName
-    isBogusEthiopicDate
-    isBogusGregorianDate
-	FixedToEthiopic
-	EthiopicToFixed
-	FixedToGregorian
-	GregorianToFixed
-    EthiopicToGregorian
-    GregorianToEthiopic
-    easctime
+	EthiopicToGregorian
+	GregorianToEthiopic
+	easctime
 );
-$VERSION = '0.12';
+	# isLeapYear
+	# isEthiopicLeapYear
+	# isEthiopianHoliday
+	# getEthiopicMonth
+	# getEthiopicDayOfWeek
+	# getEthiopicDayName
+    # isBogusEthiopicDate
+    # isBogusGregorianDate
+	# FixedToEthiopic
+	# EthiopicToFixed
+	# FixedToGregorian
+	# GregorianToFixed
+
+$VERSION = '0.20';
 
 bootstrap Convert::Ethiopic $VERSION;
 
