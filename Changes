@@ -1,5 +1,9 @@
 Revision history for Perl extension Convert::Ethiopic.
 
+0.11 Sun Jan 30 20:46:53 EST 2000
+	- addition of new GeezFont typefaces AddisB1, AddisL1, AddisT1.
+	- $VERSION added to all .pm files.
+
 0.10 Fri Nov 27 08:56:27 EST 1999
 	- addition of EthioWalia and GFZemen2K systems.
 

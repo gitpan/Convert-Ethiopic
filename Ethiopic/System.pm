@@ -1,4 +1,7 @@
 package Convert::Ethiopic::System;
+
+$VERSION = '0.10';
+
 require 5.000;
 require Exporter;
 
@@ -127,7 +130,7 @@ $uppercase    = 128;
 	'ET-Saba'  				=>	[ 'ET-Saba',					$alpas,			0,	0,	0,	'alpas' ],
 
 #
-#	Brana http://truman.cs.missouri.edu/~brana/
+#	Brana http://web.missouri.edu/~aesamha/
 #
 	'Brana' 				=>	[ 'Brana I',					$branai,		0,	0,	1,	'brana' ],
 	'Brana II' 				=>	[ 'Brana II',					$branaii,		0,	1,	1,	'brana' ],
@@ -166,7 +169,7 @@ $uppercase    = 128;
 
 
 #
-#	Ethiopian Computers & Software http://home.navisoft.com/ethiopian/index.htm
+#	Ethiopian Computers & Software http://hometown.aol.com/ethiopian/index.htm
 #
 	'GeezEditAmharicP' 		=>	[ 'Ge\xe8zEdit Amharic P',		$gezedit,		 0,	0,	0,	'gI2z\\Edit\\' ],
 	'AmharQ' 				=>	[ 'AmharQ',						$gezedit,	     0,	1,	0,	'amarNa\\Q\\'  ],
@@ -178,9 +181,12 @@ $uppercase    = 128;
 	'geezBasic'				=>	[ 'geezBasic',					$gezfont,		 0,	1,	1,	'gI2z\\Basic\\' ],
 	'geezLong' 				=>	[ 'geezLong',					$gezfont,		 0,	2,	1,	'gI2z\\Long\\'  ],
 	'GeezThin' 				=>	[ 'GeezThin',					$gezfont,		 0,	3,	1,	'gI2z\\Thin\\'  ],
+	'AddisB1' 				=>	[ 'AddisB1',					$gezfont,		 0,	4,	1,	'adis\\B1\\'  ],
+	'AddisL1' 				=>	[ 'AddisL1',					$gezfont,		 0,	5,	1,	'adis\\L1\\'  ],
+	'AddisT1' 				=>	[ 'AddisT1',					$gezfont,		 0,	6,	1,	'adis\\T1\\'  ],
 
 #
-#	Ge'ezFree Zemen ftp://ftp.cs.indiana.edu/pub/fidel/fonts/TrueType/InstallHelp.html
+#	Ge'ezFree Zemen ftp://ftp.abyssiniacybergateway.net/pub/users/abyssini/fonts/TrueType/InstallHelp.html
 #
 	'GFZemen' 				=>	[ 'GF Zemen Primary',			$gezfree1,		0,	0,	1,	'gI2z\\Free\\' ],
 	'GF Zemen Secondary' 	=>	[ 'GF Zemen Secondary',			$gezfree1,		0,	1,	1,	'gI2z\\Free\\' ],

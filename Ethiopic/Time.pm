@@ -1,4 +1,7 @@
 package Convert::Ethiopic::Time;
+
+$VERSION = '0.10';
+
 require 5.000;
 
 use Convert::Ethiopic;
