@@ -4,6 +4,8 @@ require 5.000;
 use Convert::Ethiopic;
 use Convert::Ethiopic::Cstocs;
 
+($unicode, $utf8) = ( $Convert::Ethiopic::System::unicode,  $Convert::Ethiopic::System::utf8 );
+
 
 sub new
 {
